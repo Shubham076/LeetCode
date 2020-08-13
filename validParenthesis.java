@@ -5,7 +5,15 @@ public class validParenthesis {
 
     public static void main(String[] args) {
 
-        String str = "[({)]";
+        String str = "{}";
+        System.out.println(Valid(str));
+   
+        
+    }
+    
+    // with stack
+    public static boolean valid(String str){
+
         boolean valid = false;
 
         HashMap<Character ,Character> map = new HashMap<>();
@@ -45,8 +53,34 @@ public class validParenthesis {
          // If the stack still contains elements, then it is an invalid expression.
         valid = s.empty();
 
-        System.out.println(valid);
-        
+        return valid;
+     
+
     }
-    
+
+    // without stack
+
+    // this is valid for one type of brackets
+    public static boolean Valid(String s){
+
+        int count = 0 ;
+
+        for(int i = 0 ; i < s.length() ; i++){
+
+            if(s.charAt(i) == '('){
+
+
+                count++;
+            }
+            else{
+                count--;
+            }
+
+            if(count < 0){
+                return false;
+            }
+        }
+
+        return count == 0;
+    }
 }
